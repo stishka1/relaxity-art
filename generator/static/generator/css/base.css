@@ -1,0 +1,67 @@
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ============ Адаптивный дизайн ============  */
+.main-container {
+	max-width: 1000px;
+	margin: 0px auto;
+	padding: 0px 10px;
+	/* font-family: 'Jost', sans-serif; */
+    font-family: 'Manrope', sans-serif;
+  }
+  
+  @media (max-width: 1000px) {
+	.main-container{
+	  max-width: 970px;
+    /* display: flex;
+    justify-content: end; */
+	}
+  }
+  
+  @media (max-width: 992px) {
+	.main-container{
+	  max-width: 750px;
+    /* display: flex;
+    justify-content: end; */
+	}
+  }
+  
+  @media (max-width: 767px) {
+	.main-container{
+	  max-width: none;
+    /* display: flex;
+    justify-content: center; */
+	}
+  }
+/* ============ Адаптивный дизайн ============  */
+
+
+.code {
+    background-image: url("C:.VSC.DJANGO.Ring-string.ringstring.generator.static.generator.images.background.svg");
+}
+
+.body {
+    background-image: url("C:.VSC.DJANGO.Ring-string.ringstring.generator.static.generator.images.background.svg");
+}
+
+
+
+button:hover, .btn:hover {
+    -webkit-filter: brightness(90%);
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+
+
+.panel-default > .panel-heading {
+  color: #333;
+  background-color: #fcfcfc;
+  border-color: #ddd;
+  border-color: rgba(221,221,221,0.85);
+}

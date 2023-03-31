@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Картина из нитей по любой фотографии</title>
+
+    <!-- Мой файл javascript -->
+    <script type="text/javascript" src="{% static 'generator/js/string_art_generator.js' %}"></script>
+    <script type="text/javascript" src="{% static 'generator/js/draw.js' %}"></script>
+    <script type="text/javascript" src="{% static 'generator/js/constants.js' %}"></script>
+    <script type="text/javascript" src="{% static 'generator/js/events.js' %}"></script>
+    <script type="text/javascript" src="{% static 'generator/js/init.js' %}"></script>
+
+</head>
+<!-- style="background-image: url('{% static 'generator\images\background.svg' %}'); background-repeat-x: no-repeat; background-repeat-y: no-repeat;" -->
+    <body>
+        <div class="main-container" style="width: 100%;">
+                <div class="position-absolute top-0 end-0" style="padding-top: 20px; padding-right: 20px;">
+                    <div id="liveToast" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" style="background-color: #4CDEC1;">
+                        <div class="d-flex">
+                          <div class="toast-body" style="font-size: 16px; font-weight: 700;">
+                            Le lien vers le manuel a été généré avec succès!
+                          </div>
+                          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- <span class="d-flex justify-content-center mt-5" style="font-size: 45px; font-weight: 800;">Générateur d'image de style String Art</span> -->
+            <!-- <button class="btn btn-primary" onclick="window.location.href = '/download/'">Далее</button> -->
+            <div class="generator" id="generator-box">
+                <div class="row">
+                    <div class="col">
+                        <img src="{% static 'generator/images/generator.jpg' %}" class="rounded mx-auto d-block mt-4" alt="Générateur d'image de style String Art">
+                        <!-- <span class="d-flex justify-content-center mt-5" style="font-size: 45px; font-weight: 800;">Générateur d'image de style String Art</span> -->
+                    </div>
+                </div>
+                <div class="row" id="t0" style="margin-top: 0px;">
+                    <div class="col" style="margin-top: 20px;">
+                        <img src="{% static 'generator/images/image_blank.jpg' %}" id="imageblank" class="rounded mx-auto d-block">
+                    </div>
+                </div>
+                <div class="row" id="t1" style="margin-top: -350px;">
+                        <div class="col" style="margin-top: 20px;">
+                            <!-- <div class="drag-drop" id="drag-drop-box" style="display: none;">
+                                <div class="drag-drop-table">
+                                    <div>Отпустите файл для загрузки изображения</div>
+                                </div>
+                            </div> -->
+                            <div class="container-fluid d-flex justify-content-center">
+                                <div class="view">
+                                    <canvas id="canvas" style="width: 390px; height: 390px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row" id="t2" style="display: none;">
+                    <div class="col d-flex justify-content-center" style="padding-top: 10px;">
+                        <h4 class="d-flex justify-content-center" id="loaderpdf" style="padding-left: 50px; visibility: hidden; font-weight: 700;">Le lien vers les instructions est généré...</h4>
+                    </div>
+                </div>
+                <div class="row mb-2" id="t3" style="display: none;">
+                    <div class="col d-flex justify-content-center">
+                        <!-- href="{% url 'download_pdf' %}"      visibility: hidden;                   -->
+                        <a role="button" class="btn border-0 shadow d-flex justify-content-center downloadbutton" id="liveToastBtn" style="background-color: black; color:white; width: 250px; height: 60px; border-radius: 40px; font-size: 18px; font-weight: 700; padding-left: 20px; padding-top: 15px; visibility: hidden;">Télécharger manuel</a> 
+                        <!-- <input style="display:none" type="button" id="liveToastBtn" class="btn border-0 shadow d-flex justify-content-center downloadbutton" value="Télécharger manuel" onclick="result.url" style="width: 500px; height: 60px; border-radius: 40px; font-size: 18px; font-weight: 700; padding-top: 15px;"/> -->
+                    </div>
+                </div>
+                <div class="row" id="showcanvas" style="margin-top: 0px">
+                    <div class="col d-flex justify-content-center" style="margin-top: 10px;">
+                        <div class="controls">
+                            <div id="controlsblock" class="control-block centered d-flex justify-content-center">
+                                <button type="button submit" id="elem" class="form-control border-0 shadow mt-1" style="width: 250px; height: 60px; border-radius: 40px; text-align: center!important; font-size: 16px; font-weight: 700;">Sélectionner une image</button>
+                                <!-- <button type="button submit" id="select-btn" class="btn btn-warning">Sélectionner une image</button> -->
+                                <!-- <input type="submit" id="select-btn" value="Выбрать изображение"><br> -->
+                            </div>
+                
+                            <div id="controls-box">
+                                <div class="control-block no-top-padding" id="form-block" style="display: none">
+                                    <label><b>Форма</b>
+                                        <select class="form-select" id="form-type-box" disabled>
+                                            <option value="circle" selected>Круг</option>
+                                            <!-- <option value="rect">Квадрат</option>
+                                            <option value="album">Альбом</option>
+                                            <option value="portrait">Портрет</option>
+                                            <option value="image">По изображению</option> -->
+                                        </select>
+                                    </label>
+                                </div>
+                
+                                <div class="control-block no-top-padding mt-5 d-flex justify-content-center">
+                                    <input class="form-check-input" type="checkbox" id="invert-box" disabled> 
+                                    <label class="form-check-label" for="invert-box">Inverser la luminosité</label>
+                                </div>
+                
+                                <div class="control-block no-margin no-top-padding mt-3">
+                                    <div class="container-fluid d-flex justify-content-center">
+                                        <label class="mt-4"><b>Contraste</b><br>
+                                            <input type="range" class="form-range" id="contrast-box" value="0" min="-100" max="100" step="5" disabled>
+                                        </label>
+                                        <div class="range-label" id="contrast-value">0</div>
+                                    </div>
+                                    <div class="container-fluid d-flex justify-content-center">
+                                        <label class="mt-4"><b>Luminosité</b><br>
+                                            <input type="range" class="form-range" id="brightness-box" value="0" min="-100" max="100" step="5" disabled>
+                                        </label>
+                                        <div class="range-label" id="brightness-value">0</div>
+                                    </div>
+                                </div>
+                
+                                <div class="control-block no-top-padding" id="gvozdi-place-box" style="display: none">
+                                    <label><b>Расположение гвоздей</b>
+                                        <select class="form-select" id="nails-mode-box" disabled>
+                                            <option value="border" selected>на границе</option>
+                                            <!-- <option value="grid">в виде сетки</option>
+                                            <option value="random">случайно</option> -->
+                                        </select>
+                                    </label>
+                                </div>
+                
+                                <div class="control-block no-top-padding" id="gvozdi-quantity" style="display: none">
+                                    <label><b>Количество гвоздей</b><br>
+                                        <input class="form-control" type="number" id="nails-count-box" value="240" min="50" max="1000" disabled>
+                                    </label>
+                                </div>
+                
+                                <div class="control-block" id="strings-quantity" style="display: none">
+                                    <label><b>Количество линий</b><br>                                     <!--- 3700  --> 
+                                        <input class="form-control" type="number" id="lines-count-box" value="700" min="100" max="10000" disabled>
+                                    </label>
+                                </div>
+                
+                                <div class="control-block" style="display: none">
+                                    <label><b>Непрозрачность линии</b><br>
+                                        <input type="range" class="form-range" id="lines-weight-box" value="10" min="1" max="100" disabled>
+                                    </label>
+                                    <div class="range-label" id="lines-weight-value">10%</div>
+                                </div>
+                
+                                <div class="control-block no-margin" style="display: none">
+                                    <input type="color" id="lines-color-box" value="#000000" disabled> <label for="lines-color-box"><b>Цвет линии</b></label>
+                                </div>
+                
+                                <div class="control-block" style="display: none">
+                                    <input type="color" id="background-color-box" value="#ffffff" disabled> <label for="background-color-box"><b>Цвет фона</b></label>
+                                </div>
+                
+                                <div class="control-block centered mt-4 d-flex justify-content-center">
+                                    <input type="submit" id="generate-btn" class="border-0 shadow mt-4" style="width: 250px; height: 50px; border-radius: 40px; text-align: center!important; font-size: 16px; font-weight: 700;" value="Lancer" disabled>
+                                    <div id="status-box"></div>
+                                </div>
+                            </div>
+    
+    
+                
+                            <div class="control-block mt-3">
+                                <div id="info-box"></div>
+                                <input type="submit" id="reset-btn" class="border-0 shadow ms-3" style="width: 110px; height: 50px; border-radius: 40px; text-align: center!important; font-size: 16px; font-weight: 700; visibility: hidden;" value="Annuler" disabled>
+                            </div>
+                
+                            <div id="save-box" style="display: none">
+                                <hr>
+                                <div class="control-block no-top-padding">
+                                    <label><b>Формат сохранения:</b>
+                                        <select class="form-select" id="save-type-box1">
+                                            <option value="json">JSON</option>
+                                            <!-- <option value="png">png</option>
+                                            <option value="svg">svg</option> -->
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="control-block no-top-padding">
+                                    <label><b>Формат сохранения:</b>
+                                        <select class="form-select" id="save-type-box2">
+                                            <!-- <option value="json">JSON</option> -->
+                                            <option value="png">png</option>
+                                            <!-- <option value="svg">svg</option> -->
+                                        </select>
+                                    </label>
+                                </div>
+                
+                                <div class="control-block no-top-padding centered">
+                                    <input type="submit" id="save-btn" class="btn btn-success" value="Сгенерировать инструкцию">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+      
+        <script>
+            let canvas = document.getElementById('canvas')
+            let generator = new StringArtGenerator(canvas)
+        </script>
+      
+      <script>
+        const toastTrigger = document.getElementById('liveToastBtn')
+        const toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+    
+            toast.show()
+        })
+        }
+      </script>
+
+<!-- <script>elem.onclick = function(){
+    document.getElementById("showcanvas").style.margin = "0px";
+    }
+</script> -->
+  
+    </body>
+</html>
+{% endblock %}

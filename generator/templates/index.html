@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- 240
+3700
+круг
+гвозди на границе
+скачать инструкцию
+нити черные
+белый фон
+констрастность
+яркость
+
+инструкию показать до 22.02 -->
+
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Картина из нитей по любой фотографии</title>
+</head>
+
+<body>
+  <div class="mt-1" style="background-color: black; width: 1920px; height: 500px; color: white; font-weight: 800;">
+    <div class="row g-0">
+      <div class="col-md-5" style="padding-top: 100px; padding-left: 270px;">
+        <span class="promo__title" style="font-size: 45px; font-weight: 500; margin-bottom: 20px;">RingString</span>
+        <div style="font-size: 40px; font-weight: 400; line-height: 1.15; margin-bottom: 40px;">Картина нитью из любой фотографии</div>
+        <div style="font-size: 24px; font-weight: 600; line-height: 1.15; margin-bottom: 40px;">Собирай свои шедевры с расслабляющей голосовой инструкцией</div>
+        <div><button type="button" class="btn btn-light" style="border-radius: 50px; font-size: 18px; font-weight: 500; width: 246px; height: 55px;">КУПИТЬ</button></div>
+      </div>
+      <div class="col-md-6" style="margin-left: 150px;">
+        <img src="{% static 'generator\images\RingGif_Edited.gif' %}" class="img-fluid rounded-start" style="height: 500px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="main-container">
+
+  </div>
+
+
+
+
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Une image de fils de n'importe quelle photo RelaxityArt. Acheter avec livraison</title>
+
+      <!-- Всегда первым идет jquery, потом все кастомные скрипты-->
+      <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+
+      <!-- Шрифт Roboto, шрифт всегда должен быть перед подключением css файла -->
+      <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet"> -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;700;800&display=swap" rel="stylesheet">
+
+      <!-- Мой файл javascript -->
+      <script type="text/javascript" src="{% static 'generator/js/base.js' %}"></script>
+
+      <link rel="stylesheet" type="text/css" href="{% static 'generator/css/base.css' %}">
+
+      <link rel="shortcut icon" type="image/png" href="{% static 'generator/images/favicon.png' %}"/>
+
+      <!-- Мой файл javascript -->
+      <!-- <script type="text/javascript" src="{% static 'main/js/base.js' %}"></script> -->
+
+      <!--FontAwesome CDN-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+      <script src="https://kit.fontawesome.com/25aa5b4562.js" crossorigin="anonymous"></script>
+
+      <!-- Bootstrap 5-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+      <!-- MDB -->
+      <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/> -->
+      <!-- MDB -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+
+      <!-- Отрытие картинки на детальной странице товара на максимум -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
+</head>
+<body>
+
+  <div class="main-container">
+
+
+  <!-- ============= COMPONENT ============== -->
+    <!-- <nav class="navbar navbar-expand-lg rounded shadow" id="nav" style="background-color: rgb(255, 255, 255);">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'enter_code' %}">
+            <img src="{% static 'generator\images\svg_logo.svg' %}" alt="Logo" width="150" height="50" class="d-inline-block align-text-top">
+          </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="main_nav" style="padding-left: 20px;">
+      <ul class="navbar-nav"> -->
+        <!-- <li class="nav-item"> <a class="nav-link" href="{% url 'enter_code' %}" style="color: rgb(68, 68, 68); font-size: 16px; font-weight: 500;">Entrer le code </a> </li> -->
+      <!-- </ul>
+    
+      <ul class="navbar-nav ms-auto">
+        <span class="mt-1" style="font-size: 14px; font-weight: 800;">Site officiel</span>
+      </ul>
+      </div>
+      </div>
+    </nav> -->
+    <!-- ============= COMPONENT END// ============== -->
+  </div>
+
+  {% block content %}
+
+  {% endblock %}
+
+
+
+</body>
+</html>

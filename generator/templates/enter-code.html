@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Une image de fils de n'importe quelle photo RelaxityArt. Acheter avec livraison</title>
+</head>
+
+<body style="background-image: url('{% static 'generator\images\background.svg' %}'); background-repeat-x: no-repeat; background-repeat-y: no-repeat;">
+
+    <div class="main-container">
+
+        <div class="d-flex justify-content-center" style="margin-top: 80px;">
+            <img src="{% static 'generator\images\logo_small.png' %}" alt="Logo" width="294" height="142" class="d-inline-block align-text-top">
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="container d-flex justify-content-center mt-5">
+                    {% if form.code.errors or form.quantity.errors %}
+                    <div class="alert alert-danger shadow border-0 rounded d-flex justify-content-center mt-0" role="alert" style="width: 400px; max-height: 70px; font-size: 16px; font-weight: 500;">
+                        {{ form.code.errors }}
+                        {{ form.quantity.errors }}
+                        {{ form.non_field.errors }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="container mt-4 mb-3">
+                    <div class="d-flex justify-content-center">
+                        <span style="font-weight: 700; font-size: 16px">Entrez le code à huit chiffres des instructions du kit</span><br>
+                    </div>
+                </div>
+                <div class="container d-flex justify-content-center">
+                    <form class="" action="{% url 'generate' %}" method="POST">
+                        {% csrf_token %}
+                        {{ form.code }}
+                        {{ form.quantity }}
+                        
+                        <div class="container d-flex justify-content-center">
+                            <button type="submit" class="form-control border-0 shadow mt-4" style="width: 110px; height: 50px; border-radius: 40px; text-align: center!important; font-size: 18px; font-weight: 700;">Puis</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+  
+  
+  
+  <br>
+  
+  </body>
+  </html>
+  {% endblock %}
