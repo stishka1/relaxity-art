@@ -17,7 +17,6 @@ from django.template.loader import render_to_string
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 
-
 # Create your views here.
 
 def home(request):
@@ -171,6 +170,7 @@ def save_pdf(request):
             yield e_c
 
     data = list(func_chunks_num(fin, c_num=309))
+    print(data)
     filtered_list = list(filter(lambda ele:ele is not None, data[-1]))
     data[-1] = filtered_list
 
