@@ -7,8 +7,6 @@
 
 **Акцент** сделан на мобильную версию сайта (**mobile first**). Т.к. во Франции доля пользователей с мобильными устройствами выше всех остальных категорий. Сайт переведен на французский язык.
 
-
-
 **В чем суть:**
 ![Alt-текст](https://raw.githubusercontent.com/stishka1/relaxity-art/master/generator/static/generator/images/photo_2023-03-14_17-54-29.jpg?v=3&s=460)
 
@@ -31,7 +29,7 @@
 ![Alt-текст](https://raw.githubusercontent.com/stishka1/relaxity-art/master/generator/static/generator/images/demo3.jpg?v=3&s=460)
 
 ____
-#### Более подробно про написание приложения можно почитать у меня в блоге: [pro-coders.ru](http://pro-coders.ru/post/1/ "Разбираемся в тонкостях библиотеки fdpf")
+#### Более подробно про написание приложения можно почитать у меня в блоге: [pro-coders.ru](https://pro-coders.ru/blog/razbiraemsya-v-tonkostyah-biblioteki-fdpf/ "Разбираемся в тонкостях библиотеки fdpf")
 
 
 ![Alt-текст](http://pro-coders.ru/media/blog/images/fpdfban_sbbTaJt.jpg?v=3&s=460)
